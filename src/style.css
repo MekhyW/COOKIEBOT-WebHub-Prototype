@@ -1,13 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("css/utility-flexbox.css");
+@import url("css/checkbox.css");
+@import url("css/select.css");
+@import url("css/input-number.css");
+
+/* Color Pallet */
+:root {
+  /* Backgrounds */
+  --background: rgb(17, 9, 17);
+  --foreground-level1: rgb(46, 25, 20);
+
+  /* Text */
+  --color-title: rgb(255, 255, 255);
+  --color-subtitle: rgb(242, 242, 242);
+  --color-text: rgb(235, 235, 235);
+
+  /* Controls */
+  --control-background: rgb(101, 67, 42);
+  --control-background-unticked: rgb(74, 43, 33);
+  --border-control: rgba(255, 255, 255, 0.1);
+}
+
 body {
-  background-color: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--color-text);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   margin: 0;
+  font-size: 1.25rem;
 }
 
 h1,
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-size: 1.5rem;
 }
 
 ul {
@@ -20,10 +50,16 @@ img {
   width: 100%;
 }
 
-.tg-button {
-  background-color: var(--tg-theme-button-color);
-  color: var(--tg-theme-button-text-color);
+.button {
+  background-color: var(--control-background-unticked);
+  color: var(--color-text);
   border-radius: 12px;
-  border: none;
-  min-height: 2rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px inset var(--border-control);
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: var(--control-background);
+  color: var(--color-title);
 }

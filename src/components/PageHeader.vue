@@ -17,7 +17,7 @@ onMounted(() => {});
 .header {
   display: flex;
   align-items: center;
-  background-color: var(--tg-theme-secondary-bg-color);
+  background-color: var(--foreground-level1);
   gap: 0.75rem;
   padding: 0.5rem;
   height: 2rem;

@@ -42,8 +42,8 @@ async function saveSettings() {
   <div class="container">
     <PageHeader></PageHeader>
 
-    <div class="scroll-container">
-      <form @submit.prevent="saveSettings">
+    <form @submit.prevent="saveSettings" class="scroll-container">
+      <div class="form-scroll-container">
         <!-- General -->
         <span class="category">General</span>
 
@@ -104,14 +104,17 @@ async function saveSettings() {
           <input id="publisher-ask" type="checkbox" v-model="groupStore.currentSettings.publisherAsk" />
           <label for="publisher-ask">Publish content from this group to others</label>
         </div>
+      </div>
 
-        <button class="tg-button">Save</button>
-      </form>
-    </div>
+      <div class="action-buttons">
+        <button class="button flex-1">Save Changes</button>
+      </div>
+    </form>
+
     <div class="overlay-dialog" v-if="dialogVisible">
       <div class="overlay-foreground">
         <p>{{ dialogMessage }}</p>
-        <button class="tg-button" v-if="dialogButtonVisible" @click="dialogVisible = false">OK</button>
+        <button class="button" v-if="dialogButtonVisible" @click="dialogVisible = false">OK</button>
       </div>
     </div>
   </div>
@@ -151,13 +154,18 @@ async function saveSettings() {
   overflow-y: scroll;
 }
 
+.form-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  flex: 1;
+  overflow-y: scroll;
+}
+
 span.category {
   text-align: center;
   font-size: 1.5rem;
-}
-
-input[type="number"] {
-  width: 10ch;
 }
 
 .setting-item {
@@ -166,10 +174,21 @@ input[type="number"] {
   gap: 0.5rem;
 }
 
+.form-cierra {
+  display: flex;
+  flex: 1;
+}
+
 form {
   display: flex;
   flex-direction: column;
+  font-size: 1.25rem;
+}
+
+.action-buttons {
+  display: flex;
+  box-shadow: 0px -7px 7px var(--background);
   padding: 0.5rem;
-  gap: 0.5rem;
+  z-index: 1;
 }
 </style>

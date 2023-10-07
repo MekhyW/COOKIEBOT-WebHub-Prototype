@@ -17,11 +17,6 @@ export const useTelegramUserStore = defineStore("telegram_user_store", () => {
       init_data.value = "test_data";
       hash.value = "1234567890abcdefgihjklmopqrstuvwxyz";
 
-      var telegram_styles = document.createElement("style");
-      telegram_styles.innerText =
-        ":root { --tg-color-scheme: dark; --tg-theme-bg-color: #282e33; --tg-theme-button-color: #60a8e7; --tg-theme-button-text-color: #ffffff; --tg-theme-hint-color: #82868a; --tg-theme-link-color: #67bbf3; --tg-theme-secondary-bg-color: #313b43; --tg-theme-text-color: #f5f5f5; --tg-viewport-height: 496px; --tg-viewport-stable-height: 496px; }";
-      document.head.appendChild(telegram_styles);
-
       return;
     }
     console.log(Telegram.WebApp);

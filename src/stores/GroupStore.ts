@@ -5,7 +5,7 @@ import { GroupSettings } from "../models/GroupSettings";
 
 export const useGroupStore = defineStore("group_store", () => {
   let settingsLoaded = ref(false);
-  let groupName = ref("");
+  let groupName = ref("No group name");
   let currentSettings = ref(
     new GroupSettings(
       "abc1234567890defghijklmnopqrstuvwxyz",
