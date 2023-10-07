@@ -30,10 +30,10 @@ div.category-toggler {
 
 div.content-container {
   display: flex;
-  transition-property: height opacity;
+  transition-property: height, opacity;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
-  will-change: height opacity transform;
+  will-change: opacity, transform;
   flex-direction: column;
   gap: 0.5rem;
   opacity: 1;
