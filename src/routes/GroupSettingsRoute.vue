@@ -36,6 +36,9 @@ async function saveSettings() {
   dialogVisible.value = true;
   dialogMessage.value = "Saving Changes...";
   dialogButtonVisible.value = false;
+  await groupStore.saveSettings();
+
+  dialogButtonVisible.value = true;
 }
 </script>
 
@@ -53,6 +56,24 @@ async function saveSettings() {
               <option value="pt">Português</option>
               <option value="en">English</option>
             </select>
+          </div>
+          <div class="setting-item-horizontal">
+            <label for="welcome-message">Welcome Message</label>
+            <textarea
+              v-model="groupStore.currentSettings.welcomeMessage"
+              maxlength="4096"
+              id="welcome-message"
+              placeholder="Welcome to my awesome group"
+            ></textarea>
+          </div>
+          <div class="setting-item-horizontal">
+            <label for="rules-message">Rules</label>
+            <textarea
+              v-model="groupStore.currentSettings.rulesMessage"
+              maxlength="4096"
+              id="rules-message"
+              placeholder="No cogs allowed, toons only area"
+            ></textarea>
           </div>
           <div class="setting-item">
             <input id="furbots" type="checkbox" v-model="groupStore.currentSettings.furbots" />
@@ -129,21 +150,22 @@ async function saveSettings() {
   align-items: center;
   justify-content: center;
   position: absolute;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.7);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   user-select: none;
+  z-index: 1;
 }
 
 .overlay-foreground {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  background: var(--tg-theme-secondary-bg-color);
+  background: var(--foreground-level1);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .container {
@@ -154,7 +176,7 @@ async function saveSettings() {
 .scroll-container {
   position: relative;
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .form-scroll-container {
@@ -175,6 +197,12 @@ span.category {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.setting-item-horizontal {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
 }
 
 .form-cierra {

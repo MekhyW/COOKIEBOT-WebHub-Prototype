@@ -12,6 +12,8 @@ export class GroupSettings {
   timeWithoutSendingImages: number;
   timeCaptcha: number;
   maxPosts: number;
+  welcomeMessage: string;
+  rulesMessage: string;
 
   constructor(
     id: string,
@@ -26,7 +28,9 @@ export class GroupSettings {
     timeCaptcha: number,
     maxPosts: number,
     language: string,
-    threadPosts: string
+    threadPosts: string,
+    welcomeMessage: string,
+    rulesMessage: string
   ) {
     this.id = id;
     this.furbots = furbots;
@@ -41,5 +45,7 @@ export class GroupSettings {
     this.publisherAsk = publisherAsk;
     this.threadPosts = threadPosts;
     this.maxPosts = maxPosts;
+    this.welcomeMessage = welcomeMessage;
+    this.rulesMessage = rulesMessage;
   }
 }

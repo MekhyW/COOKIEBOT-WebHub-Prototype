@@ -10,9 +10,9 @@ const isVisible = ref(true);
 
 <template>
   <div class="category-toggler" :class="isVisible ? '' : 'hidden'">
-    <header>
+    <header @click="isVisible = !isVisible">
       <span class="hidden-arrow" :class="isVisible ? '' : 'hidden'"></span>
-      <h1 @click="isVisible = !isVisible">{{ title }}</h1>
+      <h1>{{ title }}</h1>
       <span class="hidden-arrow" :class="isVisible ? '' : 'hidden'"></span>
     </header>
     <div class="content-container" :class="isVisible ? '' : 'hidden'">
@@ -56,6 +56,8 @@ header h1 {
 header {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .hidden-arrow {

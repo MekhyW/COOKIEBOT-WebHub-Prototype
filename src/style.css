@@ -3,6 +3,8 @@
 @import url("css/checkbox.css");
 @import url("css/select.css");
 @import url("css/input-number.css");
+@import url("css/textarea.css");
+@import url("css/button.css");
 
 /* Color Pallet */
 :root {
@@ -50,16 +52,19 @@ img {
   width: 100%;
 }
 
-.button {
-  background-color: var(--control-background-unticked);
-  color: var(--color-text);
-  border-radius: 12px;
-  padding: 0.375rem 0.75rem;
-  border: 1px inset var(--border-control);
-  cursor: pointer;
+*::-webkit-scrollbar {
+  appearance: none;
+  background-color: transparent;
+  width: 6px;
 }
 
-.button:active {
-  background-color: var(--control-background);
-  color: var(--color-title);
+*::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  appearance: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
 }

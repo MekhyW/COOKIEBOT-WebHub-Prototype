@@ -20,7 +20,9 @@ export const useGroupStore = defineStore("group_store", () => {
       20,
       2,
       "en",
-      "skibidi toilet"
+      "skibidi toilet",
+      "",
+      ""
     )
   );
 
@@ -28,5 +30,9 @@ export const useGroupStore = defineStore("group_store", () => {
     settingsLoaded.value = true;
   }
 
-  return { groupName, settingsLoaded, loadGroupSettings, currentSettings };
+  async function saveSettings() {
+    console.log("Caldo");
+  }
+
+  return { groupName, settingsLoaded, loadGroupSettings, currentSettings, saveSettings };
 });
