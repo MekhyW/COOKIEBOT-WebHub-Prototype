@@ -55,6 +55,7 @@ async function saveSettings() {
             <select id="language-select" name="language" v-model="groupStore.currentSettings.language">
               <option value="pt">Português</option>
               <option value="en">English</option>
+              <option value="es">Español</option>
             </select>
           </div>
           <div class="setting-item-horizontal">
