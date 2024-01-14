@@ -13,32 +13,33 @@ const groupStore = useGroupStore();
 
 groupStore.$subscribe((mutation, state) => {
   if (state.settingsLoaded) {
-    dialogVisible.value = false;
-    dialogButtonVisible.value = false;
+    hideDialog();
   } else {
-    showLoadingDialog();
+    showDialog("Loading Settings...", false);
   }
 });
 
 onMounted(() => {
-  showLoadingDialog();
   groupStore.loadGroupSettings();
 });
 
-function showLoadingDialog() {
-  dialogVisible.value = true;
-  dialogMessage.value = "Loading...";
-  dialogVisible.value = true;
-  dialogButtonVisible.value = false;
-}
-
 async function saveSettings() {
-  dialogVisible.value = true;
-  dialogMessage.value = "Saving Changes...";
-  dialogButtonVisible.value = false;
+  showDialog("Saving Changes...", false);
   await groupStore.saveSettings();
 
-  dialogButtonVisible.value = true;
+  showDialog("Saved Successfuly", true);
+}
+
+function showDialog(message: string, okButton: boolean) {
+  dialogVisible.value = true;
+  dialogMessage.value = message;
+  dialogButtonVisible.value = okButton;
+}
+
+function hideDialog() {
+  dialogVisible.value = false;
+  dialogMessage.value = "";
+  dialogButtonVisible.value = false;
 }
 </script>
 
@@ -52,7 +53,7 @@ async function saveSettings() {
         <CategoryToggler title="General">
           <div class="setting-item">
             <label for="language-select">Language</label>
-            <select id="language-select" name="language" v-model="groupStore.currentSettings.language">
+            <select id="language-select" name="language" v-model="groupStore.currentSettings.configs.language">
               <option value="pt">Português</option>
               <option value="en">English</option>
               <option value="es">Español</option>
@@ -61,7 +62,7 @@ async function saveSettings() {
           <div class="setting-item-horizontal">
             <label for="welcome-message">Welcome Message</label>
             <textarea
-              v-model="groupStore.currentSettings.welcomeMessage"
+              v-model="groupStore.currentSettings.welcomes.message"
               maxlength="4096"
               id="welcome-message"
               placeholder="Welcome to my awesome group"
@@ -70,26 +71,26 @@ async function saveSettings() {
           <div class="setting-item-horizontal">
             <label for="rules-message">Rules</label>
             <textarea
-              v-model="groupStore.currentSettings.rulesMessage"
+              v-model="groupStore.currentSettings.rules.rules"
               maxlength="4096"
               id="rules-message"
-              placeholder="No cogs allowed, toons only area"
+              placeholder="Bwah bwah bwah"
             ></textarea>
           </div>
           <div class="setting-item">
-            <input id="furbots" type="checkbox" v-model="groupStore.currentSettings.furbots" />
+            <input id="furbots" type="checkbox" v-model="groupStore.currentSettings.configs.furbots" />
             <label for="furbots">Furbots</label>
           </div>
           <div class="setting-item">
-            <input id="sfw" type="checkbox" v-model="groupStore.currentSettings.sfw" />
+            <input id="sfw" type="checkbox" v-model="groupStore.currentSettings.configs.sfw" />
             <label for="sfw">SFW</label>
           </div>
           <div class="setting-item">
-            <input id="functions-fun" type="checkbox" v-model="groupStore.currentSettings.functionsFun" />
+            <input id="functions-fun" type="checkbox" v-model="groupStore.currentSettings.configs.functionsFun" />
             <label for="functions-fun">Entertainment Functions</label>
           </div>
           <div class="setting-item">
-            <input id="functions-utility" type="checkbox" v-model="groupStore.currentSettings.functionsUtility" />
+            <input id="functions-utility" type="checkbox" v-model="groupStore.currentSettings.configs.functionsUtility" />
             <label for="functions-utility">Utility Functions</label>
           </div>
         </CategoryToggler>
@@ -98,22 +99,22 @@ async function saveSettings() {
         <CategoryToggler title="Moderation">
           <div class="setting-item">
             <label for="captcha-time">Captcha Time</label>
-            <input id="captcha-time" type="number" v-model="groupStore.currentSettings.timeCaptcha" />
+            <input id="captcha-time" type="number" v-model="groupStore.currentSettings.configs.timeCaptcha" />
           </div>
           <div class="setting-item">
             <label for="max-posts">Max Posts</label>
-            <input id="max-posts" type="number" v-model="groupStore.currentSettings.maxPosts" />
+            <input id="max-posts" type="number" v-model="groupStore.currentSettings.configs.maxPosts" />
           </div>
           <div class="setting-item">
             <label for="sticker-spam-limit">Sticker Spam Limit</label>
-            <input type="number" id="sticker-spam-limit" v-model="groupStore.currentSettings.stickerSpamLimit" />
+            <input type="number" id="sticker-spam-limit" v-model="groupStore.currentSettings.configs.stickerSpamLimit" />
           </div>
           <div class="setting-item">
             <label for="time-without-sending-images">Time without sending images</label>
             <input
               id="time-without-sending-images"
               type="number"
-              v-model="groupStore.currentSettings.timeWithoutSendingImages"
+              v-model="groupStore.currentSettings.configs.timeWithoutSendingImages"
             />
           </div>
         </CategoryToggler>
@@ -121,11 +122,11 @@ async function saveSettings() {
         <!-- Publisher -->
         <CategoryToggler title="Publisher">
           <div class="setting-item">
-            <input id="publisher-post" type="checkbox" v-model="groupStore.currentSettings.publisherPost" />
+            <input id="publisher-post" type="checkbox" v-model="groupStore.currentSettings.configs.publisherPost" />
             <label for="publisher-post">Receive content from other groups</label>
           </div>
           <div class="setting-item">
-            <input id="publisher-ask" type="checkbox" v-model="groupStore.currentSettings.publisherAsk" />
+            <input id="publisher-ask" type="checkbox" v-model="groupStore.currentSettings.configs.publisherAsk" />
             <label for="publisher-ask">Publish content from this group to others</label>
           </div>
         </CategoryToggler>

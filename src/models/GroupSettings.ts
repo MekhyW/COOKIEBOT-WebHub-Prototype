@@ -1,51 +1,61 @@
-export class GroupSettings {
-  id: string;
-  language: string;
-  threadPosts: string;
+export class Configs {
   furbots: boolean;
-  functionsFun: boolean;
-  functionsUtility: boolean;
-  sfw: boolean;
-  publisherPost: boolean;
-  publisherAsk: boolean;
   stickerSpamLimit: number;
   timeWithoutSendingImages: number;
   timeCaptcha: number;
+  functionsFun: boolean;
+  functionsUtility: boolean;
+  sfw: boolean;
+  language: "pt" | "en" | "es";
+  publisherPost: boolean;
+  publisherAsk: boolean;
+  threadPosts: string;
   maxPosts: number;
-  welcomeMessage: string;
-  rulesMessage: string;
 
-  constructor(
-    id: string,
-    furbots: boolean,
-    functionsFun: boolean,
-    functionsUtility: boolean,
-    sfw: boolean,
-    publisherPost: boolean,
-    publisherAsk: boolean,
-    stickerSpamlimit: number,
-    timeWithoutSendingImages: number,
-    timeCaptcha: number,
-    maxPosts: number,
-    language: string,
-    threadPosts: string,
-    welcomeMessage: string,
-    rulesMessage: string
-  ) {
-    this.id = id;
-    this.furbots = furbots;
-    this.stickerSpamLimit = stickerSpamlimit;
-    this.timeWithoutSendingImages = timeWithoutSendingImages;
-    this.timeCaptcha = timeCaptcha;
-    this.functionsFun = functionsFun;
-    this.functionsUtility = functionsUtility;
-    this.sfw = sfw;
-    this.language = language;
-    this.publisherPost = publisherPost;
-    this.publisherAsk = publisherAsk;
-    this.threadPosts = threadPosts;
-    this.maxPosts = maxPosts;
-    this.welcomeMessage = welcomeMessage;
-    this.rulesMessage = rulesMessage;
+
+  constructor() {
+    this.furbots = false;
+    this.stickerSpamLimit = 0;
+    this.timeWithoutSendingImages = 0;
+    this.timeCaptcha = 0;
+    this.functionsFun = false;
+    this.functionsUtility = false;
+    this.sfw = false;
+    this.language = "en";
+    this.publisherPost = false;
+    this.publisherAsk = false;
+    this.threadPosts = "";
+    this.maxPosts = 0;
+  }
+}
+
+export class Rules {
+  rules: string;
+
+
+  constructor() {
+    this.rules = "";
+  }
+}
+
+export class Welcomes {
+  message: string;
+
+
+  constructor() {
+    this.message = "";
+  }
+}
+
+export class GroupSettings {
+  configs: Configs;
+  rules: Rules;
+  welcomes: Welcomes;
+
+
+  constructor() {
+    this.configs = new Configs();
+    this.rules = new Rules();
+    this.welcomes = new Welcomes;
   }
 }
