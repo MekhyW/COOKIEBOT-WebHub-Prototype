@@ -14,18 +14,18 @@ export class Configs {
 
 
   constructor() {
-    this.furbots = false;
-    this.stickerSpamLimit = 0;
-    this.timeWithoutSendingImages = 0;
-    this.timeCaptcha = 0;
-    this.functionsFun = false;
-    this.functionsUtility = false;
-    this.sfw = false;
-    this.language = "en";
+    this.furbots = true;
+    this.stickerSpamLimit = 5;
+    this.timeWithoutSendingImages = 600;
+    this.timeCaptcha = 300;
+    this.functionsFun = true;
+    this.functionsUtility = true;
+    this.sfw = true;
+    this.language = "pt";
     this.publisherPost = false;
-    this.publisherAsk = false;
-    this.threadPosts = "";
-    this.maxPosts = 0;
+    this.publisherAsk = true;
+    this.threadPosts = "9999";
+    this.maxPosts = 9999;
   }
 }
 
