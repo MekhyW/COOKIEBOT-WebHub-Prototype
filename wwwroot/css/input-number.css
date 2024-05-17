@@ -1,0 +1,10 @@
+input[type="number"] {
+  appearance: none;
+  border: inset 1px var(--border-control);
+  background: var(--control-background-unticked);
+  border-radius: 6px;
+  color: var(--color-text);
+  padding: 0.375rem 0.25rem;
+  width: min-content;
+  font-size: 1rem;
+}

@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("css/utility-flexbox.css");
+@import url("css/checkbox.css");
+@import url("css/select.css");
+@import url("css/input-number.css");
+@import url("css/textarea.css");
+@import url("css/button.css");
 
 /* Color Pallet */
 :root {
